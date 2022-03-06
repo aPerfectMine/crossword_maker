@@ -1,0 +1,59 @@
+# get a single capitalised list of all surnames
+cat /home/jim/JIMBO/CRICKET/CROSSWORD/COMPLETE_LISTS/all_players_one_space.txt | cut -d" " -f2 | tr [:lower:] [:upper:] > all_surnames_unsorted.txt
+cat /home/jim/JIMBO/CRICKET/CROSSWORD/COMPLETE_LISTS/all_players_initials_gone.txt | tr [:lower:] [:upper:] >> all_surnames_unsorted.txt
+cat /home/jim/JIMBO/CRICKET/CROSSWORD/COMPLETE_LISTS/all_players_still_with_extra_spaces.txt | tr [:lower:] [:upper:] >> all_surnames_unsorted.txt
+cat all_surnames_unsorted.txt | sort -u > all_surnames_sorted_unpruned.txt
+
+# remove spaces, dashes etc.
+cat all_surnames_sorted_unpruned.txt | tr -d " " | tr -d "-" | tr -d "'" | sort -u > all_surnames_pruned.txt
+
+# still need to find accented characters
+cat all_surnames_pruned.txt | egrep '[^A-Z]'
+
+
+
+# initialise some files for by-word-length lists
+number=3; while [ $number -le 12 ]; do printnum=$(printf "%02d" $number); outfile="all"$printnum".txt"; > $outfile; number=$(($number+1)); done
+
+number=3; printnum=$(printf "%02d" $number); outfile="all"$printnum".txt"; cat all_surnames_pruned.txt | while read string; do echo $string ${#string} | grep \ $number | cut -d" " -f1; done > $outfile
+number=4; printnum=$(printf "%02d" $number); outfile="all"$printnum".txt"; cat all_surnames_pruned.txt | while read string; do echo $string ${#string} | grep \ $number | cut -d" " -f1; done > $outfile
+number=5; printnum=$(printf "%02d" $number); outfile="all"$printnum".txt"; cat all_surnames_pruned.txt | while read string; do echo $string ${#string} | grep \ $number | cut -d" " -f1; done > $outfile
+number=6; printnum=$(printf "%02d" $number); outfile="all"$printnum".txt"; cat all_surnames_pruned.txt | while read string; do echo $string ${#string} | grep \ $number | cut -d" " -f1; done > $outfile
+number=7; printnum=$(printf "%02d" $number); outfile="all"$printnum".txt"; cat all_surnames_pruned.txt | while read string; do echo $string ${#string} | grep \ $number | cut -d" " -f1; done > $outfile
+number=8; printnum=$(printf "%02d" $number); outfile="all"$printnum".txt"; cat all_surnames_pruned.txt | while read string; do echo $string ${#string} | grep \ $number | cut -d" " -f1; done > $outfile
+number=9; printnum=$(printf "%02d" $number); outfile="all"$printnum".txt"; cat all_surnames_pruned.txt | while read string; do echo $string ${#string} | grep \ $number | cut -d" " -f1; done > $outfile
+number=10; printnum=$(printf "%02d" $number); outfile="all"$printnum".txt"; cat all_surnames_pruned.txt | while read string; do echo $string ${#string} | grep \ $number | cut -d" " -f1; done > $outfile
+number=11; printnum=$(printf "%02d" $number); outfile="all"$printnum".txt"; cat all_surnames_pruned.txt | while read string; do echo $string ${#string} | grep \ $number | cut -d" " -f1; done > $outfile
+number=12; printnum=$(printf "%02d" $number); outfile="all"$printnum".txt"; cat all_surnames_pruned.txt | while read string; do echo $string ${#string} | grep \ $number | cut -d" " -f1; done > $outfile
+
+
+
+#### NOT NEEDED NOW ####
+
+ls /home/jim/JIMBO/CRICKET/CROSSWORD/SURNAMES_UNIQ/*.txt | while read countyFP
+  do
+    county=$(echo $countyFP | rev | cut -d"/" -f1 | rev)
+    cat $countyFP | while read string
+    do
+      stringcap=$(echo $string | tr [:lower:] [:upper:])
+      echo $stringcap ${#string} $(echo $county | cut -d"." -f1) | grep \ $number
+    done
+  done > $outfile
+
+
+cat all4.txt | cut -c 1,3 | sort -u > all4_1_3.txt
+cat all4.txt | cut -c 2,4 | sort -u > all4_2_4.txt
+cat all5.txt | cut -c 1,3,5 | sort -u > all5_1_3_5.txt
+cat all7.txt | cut -c 1,3,5,7 | sort -u > all7_1_3_5_7.txt
+cat all8.txt | cut -c 1,3,5,7 | sort -u > all8_1_3_5_7.txt
+cat all8.txt | cut -c 2,4,6,8 | sort -u > all8_2_4_6_8.txt
+cat all9.txt | cut -c 1,3,5,7,9 | sort -u > all9_1_3_5_7_9.txt
+
+
+
+# search for patterns
+egrep .O...N all06.txt | cut -c4 | sort -u | while read letter
+  do
+    pattern="A.H."$letter"."
+    egrep $pattern all06.txt
+  done
