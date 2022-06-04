@@ -105,15 +105,22 @@ clue_lengths = [6,4,5,5,10,10,5,5,4,6, \
                 4,7,10,3,6,10,7,6,4,3] # 20-clue jimboword B
 grid_number  = 5
 #
+
+# when doing the tens, give up quicker on the inner
+#  loop
+if grid_number == 3:
+  inner_attempts   = 99
+  successive_fails = 99
+
 random_upper_limit = len(clue_lengths)
 
 max_clue_count = 0
 crossword = [None] * len(clue_lengths)
 
 # try a certain number of times
-#for ii in range(outer_attempts):
-for ii in range(len(linesTens)):
-  tens = linesTens[ii]
+for ii in range(outer_attempts):
+#for ii in range(len(linesTens)):
+  #tens = linesTens[ii]
   clue_count = 0
   for ll in range(len(clue_lengths)):
     if crossword[ll] != None:
@@ -209,9 +216,17 @@ for ii in range(len(linesTens)):
         if crossword[kk] == None:
           solution = False
           break
+      # if we have a solution (i.e. every gap has
+      #  been filled) print the solution and stop
+      #  ... unless we're doing the tens
       if solution:
-        print "SOLUTION >>>", crossword
-        exit(0)
+        if grid_number == 3:
+          # for the tens, we want multiple solutions
+          print "SOLUTION >>>", crossword
+          crossword = [None] * len(clue_lengths)
+          break
+        else:
+          exit(0)
 
   # end inner loop
 # end outer loop
