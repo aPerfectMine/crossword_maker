@@ -12,7 +12,7 @@
 * `grid == 7` in `test_intersect.py`
 ### grid_202203.png
 * the same as grid_202109.png
-* `grid == 5` in `test_intersect.py`
+* `grid == 7` in `test_intersect.py`
 ### grid_202209.png
 * the same as grid_202006.png
 * `grid == 4` in `test_intersect.py`
