@@ -1,7 +1,7 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 
 import random
-import time
+import datetime
 import sys
 import test_intersect
 
@@ -26,16 +26,16 @@ if len(sys.argv) == 3:
   try:
     outer_attempts = int(sys.argv[1])
   except ValueError:
-    print "outer_attempts must be an integer"
+    print("outer_attempts must be an integer")
     exit(1)
   try:
     inner_attempts = int(sys.argv[2])
   except ValueError:
-    print "inner_attempts must be an integer"
+    print("inner_attempts must be an integer")
     exit(1)
 
 # seed the random
-random.seed(time.time)
+random.seed(datetime.datetime.now().timestamp())
 
 # declare pointers for the files
 filePtr03 = open("all03.txt","r")
@@ -108,6 +108,10 @@ clue_lengths = [4,8,6,6,5,7,7,5,6,6,8,4, \
 grid_number  = 9
 clue_lengths = [5,5,6,4,3,7,7,3,4,6,5,5, \
                 4,6,9,9,9,6,4] # 19-clue 11x11 grid
+#
+grid_number  = 8
+clue_lengths = [4,8,6,6,5,7,7,5,6,6,8,4, \
+                6,6,5,7,6,6,7,6,6,6,6,5] # as 7, but with the length-3 clues removed
 
 # when doing the tens, give up quicker on the inner
 #  loop
@@ -131,10 +135,10 @@ for ii in range(outer_attempts):
   if clue_count > max_clue_count:
     best_crossword = crossword
     max_clue_count = clue_count
-    print "biggest so far has", str(max_clue_count), "clues"
-    print crossword
+    print("biggest so far has", str(max_clue_count), "clues")
+    print(crossword)
   if clue_count == max_clue_count and clue_count > 0:
-    print "Also ...", str(max_clue_count), "...", crossword
+    print("Also ...", str(max_clue_count), "...", crossword)
   # initialise the list of words in the crossword to None
   crossword = [None] * len(clue_lengths)
   if grid_number == 4 or \
@@ -147,7 +151,7 @@ for ii in range(outer_attempts):
   # print an update on how we're getting on
   if ii%100 == 0:
     #print "Trial", str(ii), "of", str(outer_attempts)
-    print "Trial", str(ii), "of", str(len(linesTens))
+    print("Trial", str(ii), "of", str(len(linesTens)))
 
   # initialise inner counter
   jj = 0
@@ -225,7 +229,7 @@ for ii in range(outer_attempts):
       if solution:
         if grid_number == 3:
           # for the tens, we want multiple solutions
-          print "SOLUTION >>>", crossword
+          print("SOLUTION >>>", crossword)
           crossword = [None] * len(clue_lengths)
           break
         else:
@@ -234,7 +238,7 @@ for ii in range(outer_attempts):
   # end inner loop
 # end outer loop
 
-print "no solution found ... try increasing the number of attempts"
-print str(max_clue_count), "clues is as far as we got >>>", best_crossword
+print("no solution found ... try increasing the number of attempts")
+print(str(max_clue_count), "clues is as far as we got >>>", best_crossword)
 
 exit(0)

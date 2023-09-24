@@ -22,4 +22,6 @@ All-capitals, no-special-characters word lists separated by length.  My listings
 * test_intersect.py
 
 ## Other files
-The word lists are taken from all_surnames_pruned.txt
+* The word lists are taken from all_surnames_pruned.txt
+* the directory GRIDS/ contains blank grids
+

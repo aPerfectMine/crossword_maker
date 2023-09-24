@@ -6,7 +6,7 @@ def test_intersect(clue_no, \
   possible_grids = [0,1,2,3,4,5,6,7,8,9]
 
   if not grid in possible_grids:
-    print "ERROR : grid number is not in the possible_grids[] array"
+    print("ERROR : grid number is not in the possible_grids[] array")
     return 99
 
   # A is the number of the clue (zero-up) that the current
@@ -264,25 +264,25 @@ def test_intersect(clue_no, \
   if grid == 10:  # 20-clue 11x11 grid
     #                   A  B C A  B C  ...
     intersect_table = [[12,3,0], \
-           1    3      [13,1,0,14,3,0], \
-           2    6      [12,3,2,15,5,1,16,1,0], \
-           3    8      [13,0,2,14,2,2], \
-           4    9      [16,1,2], \
-           5    10     [13,3,4,14,5,4,15,1,3], \
-           6    12     [16,1,4,17,3,1,18,5,0], \
-           7    14     [14,1,6], \
-           8    16     [16,1,6,17,3,3], \
-           9    17     [14,4,8,18,0,2,19,2,1], \
-           10   18     [16,1,8,17,3,5], \
-           11   19     [19,1,3], \
-           12   2      [0,0,3,2,2,3], \
-           13   3      [1,0,1,3,2,0,5,4,3], \
-           14   4      [1,0,3,3,2,2,5,4,5,7,6,1,9,8,4], \
-           15   5      [2,1,5,5,3,1], \
-           16   7      [2,0,1,4,2,1,6,4,1,8,6,1,10,8,1], \
-           17   11     [6,1,3,8,3,3,10,5,3], \
-           18   13     [6,0,5,9,2,0], \
-           19   15     [9,1,2,11,3,1]]
+                       [13,1,0,14,3,0], \
+                       [12,3,2,15,5,1,16,1,0], \
+                       [13,0,2,14,2,2], \
+                       [16,1,2], \
+                       [13,3,4,14,5,4,15,1,3], \
+                       [16,1,4,17,3,1,18,5,0], \
+                       [14,1,6], \
+                       [16,1,6,17,3,3], \
+                       [14,4,8,18,0,2,19,2,1], \
+                       [16,1,8,17,3,5], \
+                       [19,1,3], \
+                       [0,0,3,2,2,3], \
+                       [1,0,1,3,2,0,5,4,3], \
+                       [1,0,3,3,2,2,5,4,5,7,6,1,9,8,4], \
+                       [2,1,5,5,3,1], \
+                       [2,0,1,4,2,1,6,4,1,8,6,1,10,8,1], \
+                       [6,1,3,8,3,3,10,5,3], \
+                       [6,0,5,9,2,0], \
+                       [9,1,2,11,3,1]]
   # A is the number of the clue (zero-up) that the current
   #   entry intersects with
   # B is the letter number of the current clue
@@ -306,17 +306,17 @@ def test_intersect(clue_no, \
       try:
         current_letter = current_word[intersections[ii]]
       except IndexError:
-        print "ii =", str(ii), ":: intersect[ii] =", str(intersections[ii])
-        print "current_word =", current_word
-        print "clue_no =", str(clue_no)
+        print("ii =", str(ii), ":: intersect[ii] =", str(intersections[ii]))
+        print("current_word =", current_word)
+        print("clue_no =", str(clue_no))
         current_letter = "Z"
       ii = ii+1
       try:
         check_letter = check_word[intersections[ii]]
       except IndexError:
-        print "ii =", str(ii), ":: intersect[ii] =", str(intersections[ii])
-        print "check_word =", check_word
-        print "clue_no =", str(clue_no)
+        print("ii =", str(ii), ":: intersect[ii] =", str(intersections[ii]))
+        print("check_word =", check_word)
+        print("clue_no =", str(clue_no))
         check_letter = "Z"
       ii = ii+1
       # check that the letters match
