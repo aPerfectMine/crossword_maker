@@ -41,13 +41,13 @@ ls /home/jim/JIMBO/CRICKET/CROSSWORD/SURNAMES_UNIQ/*.txt | while read countyFP
   done > $outfile
 
 
-cat all4.txt | cut -c 1,3 | sort -u > all4_1_3.txt
-cat all4.txt | cut -c 2,4 | sort -u > all4_2_4.txt
-cat all5.txt | cut -c 1,3,5 | sort -u > all5_1_3_5.txt
-cat all7.txt | cut -c 1,3,5,7 | sort -u > all7_1_3_5_7.txt
-cat all8.txt | cut -c 1,3,5,7 | sort -u > all8_1_3_5_7.txt
-cat all8.txt | cut -c 2,4,6,8 | sort -u > all8_2_4_6_8.txt
-cat all9.txt | cut -c 1,3,5,7,9 | sort -u > all9_1_3_5_7_9.txt
+cat all04.txt | cut -c 1,3 | sort -u > all4_1_3.txt
+cat all04.txt | cut -c 2,4 | sort -u > all4_2_4.txt
+cat all05.txt | cut -c 1,3,5 | sort -u > all5_1_3_5.txt
+cat all07.txt | cut -c 1,3,5,7 | sort -u > all7_1_3_5_7.txt
+cat all08.txt | cut -c 1,3,5,7 | sort -u > all8_1_3_5_7.txt
+cat all08.txt | cut -c 2,4,6,8 | sort -u > all8_2_4_6_8.txt
+cat all09.txt | cut -c 1,3,5,7,9 | sort -u > all9_1_3_5_7_9.txt
 
 
 

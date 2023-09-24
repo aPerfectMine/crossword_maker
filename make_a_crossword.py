@@ -70,41 +70,44 @@ filePtrTens.close()
 
 # lengths of clues starting with across clues
 #  and the grid number (for test_intersect.py)
+grid_number  = 0
 clue_lengths = [4,4,4,5,9,7,7,9,5,5,9,7,7,9,5,4,4,4, \
                 5,7,7,7,5,7,8,8,8,8,7,7,7,7,5,5] # 34-clue crossword
-grid_number  = 0
 #
-clue_lengths = [8,5,5,4,6,6,4,5,5,8, \
-                5,4,6,5,7,7,6,5,5,4] # 20-clue crossword
-grid_number  = 2
-#
-clue_lengths = [10,10,10,10] # just the tens, ma'am
-grid_number  = 3             # for the 20-clue grids
-#
-clue_lengths = [6,4,5,5,10,10,5,5,4,6, \
-                4,5,10,5,6,10,6,5,5,4] # 20-clue jimboword A
-grid_number  = 4
-#
+grid_number  = 1
 clue_lengths = [7,7,9,5,6,7,4,10,10,4,7,6,5,9,7,7, \
                 4,9,6,9,5,8,5,10,10,9,9,8,6,5,5,4] # 32-clue crossword
-grid_number  = 1
 #
-clue_lengths = [6,6,8,4,6,6,4,3,4,6,6,4,8,6,6, \
-                7,5,7,5,7,5,7,7,7,5,5,5] # 27-clue 13x13 crossword
-grid_number  = 6
+grid_number  = 2
+clue_lengths = [8,5,5,4,6,6,4,5,5,8, \
+                5,4,6,5,7,7,6,5,5,4] # 20-clue crossword
 #
-clue_lengths = [4,8,6,6,5,7,7,5,6,6,8,4, \
-                6,6,5,7,6,6,3,3,7,6,6,6,6,5] # 26-clue 13x13 crossword
-grid_number  = 7
+grid_number  = 3             # just the tens, ma'am
+clue_lengths = [10,10,10,10] # for the 20-clue grids
 #
-clue_lengths = [4,8,6,6,5,7,7,5,6,6,8,4, \
-                6,6,5,7,6,6,7,6,6,6,6,5] # as 7, but with the length-3 clues removed
-grid_number  = 8
+grid_number  = 4
+clue_lengths = [6,4,5,5,10,10,5,5,4,6, \
+                4,5,10,5,6,10,6,5,5,4] # 20-clue jimboword A
 #
+grid_number  = 5
 clue_lengths = [6,4,5,5,10,10,5,5,4,6, \
                 4,7,10,3,6,10,7,6,4,3] # 20-clue jimboword B
-grid_number  = 5
 #
+grid_number  = 6
+clue_lengths = [6,6,8,4,6,6,4,3,4,6,6,4,8,6,6, \
+                7,5,7,5,7,5,7,7,7,5,5,5] # 27-clue 13x13 crossword
+#
+grid_number  = 7
+clue_lengths = [4,8,6,6,5,7,7,5,6,6,8,4, \
+                6,6,5,7,6,6,3,3,7,6,6,6,6,5] # 26-clue 13x13 crossword
+#
+grid_number  = 8
+clue_lengths = [4,8,6,6,5,7,7,5,6,6,8,4, \
+                6,6,5,7,6,6,7,6,6,6,6,5] # as 7, but with the length-3 clues removed
+#
+grid_number  = 9
+clue_lengths = [5,5,6,4,3,7,7,3,4,6,5,5, \
+                4,6,9,9,9,6,4] # 19-clue 11x11 grid
 
 # when doing the tens, give up quicker on the inner
 #  loop
