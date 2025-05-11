@@ -22,6 +22,13 @@
 ### grid_202309.png
 * adapted from 19clue_jimbo_01.png by adding some blanks
 * `grid == 10` in `test_intersect.py`
+### grid_202403.png
+* the same as grid_202403.png
+* `grid == 7` in `test_intersect.py`
+### grid_202409.png
+* new grid
+* `grid == 11` in `test_intersect.py`
+
 
 ## Unpublished grids
 ### 19clue_jimbo_01.png

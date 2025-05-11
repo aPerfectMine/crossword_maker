@@ -46,6 +46,8 @@ filePtr07 = open("all07.txt","r")
 filePtr08 = open("all08.txt","r")
 filePtr09 = open("all09.txt","r")
 filePtr10 = open("all10.txt","r")
+filePtr11 = open("all11.txt","r")
+filePtr12 = open("all12.txt","r")
 filePtrTens = open("tens_solutions.out","r")
 # read the files into memory
 lines03 = filePtr03.readlines()
@@ -56,6 +58,8 @@ lines07 = filePtr07.readlines()
 lines08 = filePtr08.readlines()
 lines09 = filePtr09.readlines()
 lines10 = filePtr10.readlines()
+lines11 = filePtr11.readlines()
+lines12 = filePtr12.readlines()
 linesTens = filePtrTens.readlines()
 # close the files
 filePtr03.close()
@@ -66,6 +70,8 @@ filePtr07.close()
 filePtr08.close()
 filePtr09.close()
 filePtr10.close()
+filePtr11.close()
+filePtr12.close()
 filePtrTens.close()
 
 # lengths of clues starting with across clues
@@ -109,9 +115,17 @@ grid_number  = 9
 clue_lengths = [5,5,6,4,3,7,7,3,4,6,5,5, \
                 4,6,9,9,9,6,4] # 19-clue 11x11 grid
 #
-grid_number  = 8
+grid_number  = 10
 clue_lengths = [4,8,6,6,5,7,7,5,6,6,8,4, \
                 6,6,5,7,6,6,7,6,6,6,6,5] # as 7, but with the length-3 clues removed
+#
+grid_number  = 11
+clue_lengths = [4,8,5,7,6,6,6,6,6,6,7,5,8,4, \
+                5,5,4,12,7,7,12,7,7,5,5,4] # two length-12 clues
+#
+grid_number  = 12
+clue_lengths = [10,6,6,4,8,5,5,8,4,6,6,10, \
+                7,5,5,7,7,5,7,7,7,5,5,5] # two length-10 clues top and bottom
 
 # when doing the tens, give up quicker on the inner
 #  loop
@@ -139,6 +153,7 @@ for ii in range(outer_attempts):
     print(crossword)
   if clue_count == max_clue_count and clue_count > 0:
     print("Also ...", str(max_clue_count), "...", crossword)
+
   # initialise the list of words in the crossword to None
   crossword = [None] * len(clue_lengths)
   if grid_number == 4 or \
@@ -153,6 +168,21 @@ for ii in range(outer_attempts):
     #print "Trial", str(ii), "of", str(outer_attempts)
     print("Trial", str(ii), "of", str(len(linesTens)))
 
+  # for the grid with the length-12 clues, fill them first
+  if grid_number == 11:
+    current_list = list(lines12)
+    list_indx = random.randint(1,len(current_list))
+    chosen_word = current_list[list_indx-1]
+    crossword[17] = chosen_word[:-1] # remove the '\n'
+    list_indx = random.randint(1,len(current_list))
+    chosen_word = current_list[list_indx-1]
+    crossword[20] = chosen_word[:-1] # remove the '\n'
+
+# # for grid 12, force the two 10-letter solutions
+# if grid_number == 12:
+#   crossword[0]  = "RAMPRAKASH"
+#   crossword[11] = "KLEINVELDT"
+
   # initialise inner counter
   jj = 0
 
@@ -162,6 +192,7 @@ for ii in range(outer_attempts):
     jj = jj + 1
 
     fail_count = 0
+
     while fail_count < successive_fails:
       # create distinct copies of the word lists so that entries
       #  can be deleted
@@ -174,6 +205,8 @@ for ii in range(outer_attempts):
       temp_list08 = list(lines08)
       temp_list09 = list(lines09)
       temp_list10 = list(lines10)
+#     temp_list11 = list(lines11)
+#     temp_list12 = list(lines12)
       # create a list that allows looking up by word length
       list_of_temp_lists = [empty_list, \
                             empty_list, \
@@ -186,6 +219,9 @@ for ii in range(outer_attempts):
                             temp_list08, \
                             temp_list09, \
                             temp_list10]
+#                           temp_list10, \
+#                           temp_list11, \
+#                           temp_list12]
 
       # pick a clue number that hasn't already been used
       empty_clue = False
